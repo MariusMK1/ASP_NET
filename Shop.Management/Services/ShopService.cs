@@ -27,5 +27,10 @@ namespace Shop.Management.Services
         {
             _shopItems = _shopItems.Where(x => x.Name != name).ToList();
         }
+        public ShopItem Edit(string name)
+        {
+            ShopItem shopItem = _shopItems.Where(x => x.Name == name).FirstOrDefault();
+            return shopItem;
+        }
     }
 }

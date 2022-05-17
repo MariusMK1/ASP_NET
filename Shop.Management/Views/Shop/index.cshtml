@@ -9,6 +9,7 @@
       <th scope="col">Shop</th>
       <th scope="col">ExpiryDate</th>
       <th scope="col">Remove</th>
+      <th scope="col">Edit</th>
     </tr>
   </thead>
   <tbody>
@@ -20,6 +21,7 @@
             <td>@item.ShopName</td>
             <td>@item.ExpiryDate</td>
             <td>@Html.ActionLink("Remove", "Delete", "Shop", new { Name = @item.Name})</td>
+            <td>@Html.ActionLink("Edit", "Edit", "Shop", new { Name = @item.Name})</td>
         </tr>
      }
   </tbody>
