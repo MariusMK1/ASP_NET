@@ -27,10 +27,22 @@ namespace Shop.Management.Services
         {
             _shopItems = _shopItems.Where(x => x.Name != name).ToList();
         }
-        public ShopItem Edit(string name)
+        public ShopItem GetOne(string name)
         {
-            ShopItem shopItem = _shopItems.Where(x => x.Name == name).FirstOrDefault();
+            ShopItem shopItem = _shopItems.FirstOrDefault(x => x.Name == name);
+            if (shopItem == null)
+            {
+                throw new ArgumentException("not found");
+            }
             return shopItem;
+        }
+
+        public void Update(ShopItem shopItem)
+        {
+            ShopItem existing = _shopItems.FirstOrDefault(x => x.Name == shopItem.Name);
+
+            existing.ShopName = shopItem.ShopName;
+            existing.ExpiryDate = shopItem.ExpiryDate;
         }
     }
 }

@@ -40,14 +40,15 @@ namespace Shop.Management.Controllers
         }
         public IActionResult Edit(string name)
         {
-            ShopItem item = _shopService.Edit(name);
+            ShopItem item = _shopService.GetOne(name);
             return View(item);
         }
         [HttpPost]
         public IActionResult Edit(ShopItem item)
         {
-            _shopService.Delete(item.Name);
-            _shopService.Add(item);
+            //_shopService.Delete(item.Name);
+            //_shopService.Add(item);
+            _shopService.Update(item);
             return RedirectToAction("Index");
         }
     }
