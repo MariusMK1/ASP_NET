@@ -1,0 +1,25 @@
+﻿@model List<Book>
+
+    <h3>Books</h3>
+
+<table class="table table-striped table-dark">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">ID</th>
+      <th scope="col">Book</th>
+      <th scope="col">Remove</th>
+    </tr>
+  </thead>
+  <tbody>
+      @foreach (Book book in @Model)
+     {
+        <tr>
+            <th scope="row"></th>
+            <td>@book.Id</td>
+            <td>@book.Name</td>
+            <td>@Html.ActionLink("Remove", "Delete", "Book", new { Id = @book.Id})</td>
+        </tr>
+     }
+  </tbody>
+</table>
