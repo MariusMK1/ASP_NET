@@ -25,7 +25,11 @@ namespace Book_Author_Management.Services
             {
                 Id = x.Id,
                 Name = x.Name,
-                Books = x.Books
+                Books = x.Books.Select(b => new BookDto
+                {
+                    Id = b.Id,
+                    Name = b.Name,
+                }).ToList()
             }).ToList();
             return dtos;
         }

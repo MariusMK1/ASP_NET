@@ -9,7 +9,9 @@ namespace Book_Author_Management.Dtos
 {
     public class BookDto
     {
-        public Book Book { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
         public List<AuthorDto> Authors { get; set; }
+        public int AuthorId { get; set; }
     }
 }

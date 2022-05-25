@@ -20,10 +20,11 @@
             <th scope="row"></th>
             <td>@author.Id</td>
             <td>@author.Name</td>
-            <td>@foreach (Book book in @author.Books)
+            @*<td>@foreach (Book book in @author.Books)
                 {
                     @book.Name <a>;</a>
-                }</td>
+                }</td>*@
+                <td>@String.Join(";",@author.Books.Select(b => b.Name))</td>
             <td>@Html.ActionLink("Remove", "Delete", "Author", new { Id = @author.Id})</td>
         </tr>
      }

@@ -1,4 +1,5 @@
-﻿@model List<Book>
+﻿@using Book_Author_Management.Dtos
+@model List<BookDto>
 
     <h3>Books</h3>
 
@@ -12,7 +13,7 @@
     </tr>
   </thead>
   <tbody>
-      @foreach (Book book in @Model)
+      @foreach (BookDto book in @Model)
      {
         <tr>
             <th scope="row"></th>

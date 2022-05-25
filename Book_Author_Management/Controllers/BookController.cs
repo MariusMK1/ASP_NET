@@ -22,21 +22,21 @@ namespace Book_Author_Management.Controllers
 
         public IActionResult Index()
         {
-            List<Book> _books = _bookService.GetAll();
+            List<BookDto> _books = _bookService.GetAll();
             return View(_books);
         }
         [HttpGet]
         public IActionResult Add()
         {
             BookDto book = new BookDto();
-            book.Book = new Book();
+            
             book.Authors = _authorServive.GetAll();
             return View(book);
         }
         [HttpPost]
         public IActionResult Add(BookDto bookDto)
         {
-            _bookService.Add(bookDto.Book);
+            _bookService.Add(bookDto);
             return RedirectToAction("Index");
         }
         public IActionResult Delete(int id)

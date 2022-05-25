@@ -1,4 +1,5 @@
 ﻿using Book_Author_Management.Data;
+using Book_Author_Management.Dtos;
 using Book_Author_Management.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -17,13 +18,24 @@ namespace Book_Author_Management.Services
         {
             _dataContext = dataContext;
         }
-        public List<Book> GetAll()
+        public List<BookDto> GetAll()
         {
-            return _dataContext.Books.ToList();
+            var entities = _dataContext.Books.ToList();
+            return entities.Select(e => new BookDto
+            {
+                Id = e.Id,
+                Name = e.Name
+            }).ToList();
         }
-        public void Add(Book book)
+        public void Add(BookDto bookDto)
         {
-            _dataContext.Books.Add(book);
+            Book entity = new Book
+            {
+                Name = bookDto.Name,
+                AuthorId = bookDto.AuthorId
+            };
+
+            _dataContext.Books.Add(entity);
             _dataContext.SaveChanges();
         }
         public void Delete(int id)
