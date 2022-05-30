@@ -1,0 +1,19 @@
+﻿@using RegistrationForm.Dtos
+@model QuestionValueDto
+
+<h2>Add Question value</h2>
+
+@using (Html.BeginForm("Add", "QuestionValue", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(a => a.Text)
+        @Html.TextBoxFor(a => a.Text, "", new {@class = "form-control"})
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(a => a.QuestionId)
+        @Html.DropDownListFor(a => a.QuestionId, new SelectList(@Model.Questions, "Id", "Text"), "", new {@class = "form-control"} )
+    </div>
+        
+    <input class="btn btn-primary" type="submit" value="Submit"/>
+}
