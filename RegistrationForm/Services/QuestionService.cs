@@ -20,7 +20,7 @@ namespace RegistrationForm.Services
         }
         public List<QuestionDto> GetAll()
         {
-            List<Question> entities =  _dataContext.Questions.Include(si => si.Text).ToList();
+            List<Question> entities =  _dataContext.Questions.Include(si => si.QuestionValues).ToList();
             var dtos = entities.Select(e => new QuestionDto 
             {
                 Id = e.Id,
@@ -36,6 +36,15 @@ namespace RegistrationForm.Services
         public void Add(Question question)
         {
             _dataContext.Questions.Add(question);
+            _dataContext.SaveChanges();
+        }
+        public void Update(List<QuestionDto> questions)
+        {
+            foreach (QuestionDto questionDto in questions)
+            {
+                Question existing = _dataContext.Questions.FirstOrDefault(x => x.Id == questionDto.Id);
+                existing.QuestionValueAnswerId = questionDto.QuestionValueAnswerId;
+            }
             _dataContext.SaveChanges();
         }
     }

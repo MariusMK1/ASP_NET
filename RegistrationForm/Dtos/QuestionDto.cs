@@ -11,5 +11,6 @@ namespace RegistrationForm.Dtos
         public int Id { get; set; }
         public string Text { get; set; }
         public List<QuestionValueDto> QuestionValues { get; set; }
+        public int QuestionValueAnswerId { get; set; }
     }
 }

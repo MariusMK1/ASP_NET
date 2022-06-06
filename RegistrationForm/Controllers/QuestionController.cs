@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using RegistrationForm.Dtos;
 using RegistrationForm.Models;
 using RegistrationForm.Services;
@@ -35,6 +36,12 @@ namespace RegistrationForm.Controllers
             _questionService.Add(question);
             return View();
             //return RedirectToAction("Index");
+        }
+        [HttpPost]
+        public IActionResult Update(List<QuestionDto> questions)
+        {
+            _questionService.Update(questions);
+            return RedirectToAction("Index");
         }
     }
 }
